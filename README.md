@@ -1,5 +1,5 @@
-#Computer-Game-Wishlist
-##Gruppenmitglieder:
+# Computer-Game-Wishlist
+## Gruppenmitglieder:
 * Fabian Schotte
 * Arjan
 * Mike Tabler
