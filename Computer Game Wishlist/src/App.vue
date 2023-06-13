@@ -1,9 +1,10 @@
 <script>
 import Head from './components/Head.vue';
+import Body from './components/Body.vue';
 
 export default{
   components:{
-    Head
+    Head, Body
   },
   methods:{
     setTab(value){
@@ -23,6 +24,7 @@ export default{
   <div>
     <h1>Computer Games Wunschliste</h1>
     <Head @filterWishList="setTab"></Head>
+    <Body :selectedTab="tab"></Body>
   </div>
 </template>
 

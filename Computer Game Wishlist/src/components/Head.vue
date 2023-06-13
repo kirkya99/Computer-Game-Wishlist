@@ -53,4 +53,7 @@ export default{
     #wishlist:hover{
         background-color: lightblue;
     }
+    h2:hover{
+        cursor: pointer;
+    }
 </style>
