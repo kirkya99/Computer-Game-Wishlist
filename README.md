@@ -1,4 +1,4 @@
-# Computer-Game-Wishlist
+# Praktische Aufgabenstellung: Computer Game Wishlist
 ## Gruppenmitglieder:
 * Fabian Schotte
 * Arjan
