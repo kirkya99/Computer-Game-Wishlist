@@ -1,19 +1,13 @@
 <script>
 export default{
-    emits: ['filterWishList'],    
-    data() {
-    return {
-        //hover1: false,
-        //hover2: false
-    }
-  },
-  methods:{
-    switchToGamesList(){
-        this.$emit('filterWishList',0);
-    },
-    switchToWishlist(){
-        this.$emit('filterWishList',1);
-    }
+    emits: ['filterWishList'],
+    methods:{
+        switchToGamesList(){
+            this.$emit('filterWishList',0);
+        },
+        switchToWishlist(){
+            this.$emit('filterWishList',1);
+        }
   }
 }
 </script>

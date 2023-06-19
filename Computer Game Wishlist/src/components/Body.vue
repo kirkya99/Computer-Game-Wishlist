@@ -1,31 +1,28 @@
 <script>
-import axios from 'axios'
+import List from './List.vue';
 
 export default{
-    created(){
-        axios.get('https://cors-anywhere.herokuapp.com/https://www.mmobomb.com/api1/games')
-            .then(response => {
-                console.log(response.data)
-
-                this.gamesArray.push(response.data);
-            })
-            .catch(console.error)
-    },
-    props: ['selectedTab'],
+    props: ['selectedTab', 'games', 'wishlist'],
     components:{
-        axios
+        List
     },
     data(){
         return{
-            gamesArray: []
+            selectedGameIndex: 0,
+            wishlist: []
         }
-    },   
+    }   
 }
 
     
 </script>
 
 <template>
-
-    {{ selectedTab }}
+    <div v-if="selectedTab==0">
+        <List :games="games"></List>
+    </div>
+    <div v-if="selectedTab==1">
+        <h2>Wunschliste</h2>
+    </div>
 </template>
+
