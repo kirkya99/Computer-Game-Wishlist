@@ -6,6 +6,8 @@ export default{
         axios.get('https://cors-anywhere.herokuapp.com/https://www.mmobomb.com/api1/games')
             .then(response => {
                 console.log(response.data)
+
+                this.gamesArray.push(response.data);
             })
             .catch(console.error)
     },
