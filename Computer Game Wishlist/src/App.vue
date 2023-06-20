@@ -66,7 +66,6 @@ export default {
 <style scoped>
 * {
     font-family: Arial;
-    /*background-color: steelblue;*/
 }
 
 h1 {

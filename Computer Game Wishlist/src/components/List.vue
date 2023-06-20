@@ -21,7 +21,7 @@ export default {
 <template>
     <FilterBar></FilterBar>
     <table>
-        <tr>
+        <tr id="headerRow">
             <th class="cover">Cover</th>
             <th class="item">Title</th>
             <th class="item">Genre</th>
@@ -94,11 +94,20 @@ img {
     width: 5%;
     height: 75px;
     text-align: left;
+    align-self: center;
 }
 
 #scroll {
     overflow-y: scroll;
-    height: 990px;
+    height: 950px;
     width: 100%;
 }
-</style>
+
+#headerRow {
+    padding: 10px;
+    background-color: steelblue;
+}
+
+tr:nth-child(odd) {
+    background-color: lightblue;
+}</style>
