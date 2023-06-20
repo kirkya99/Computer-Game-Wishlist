@@ -2,17 +2,17 @@
 export const gamesTab = 0;
 export const wishlistTab = 1;
 
-export default{
+export default {
     emits: ['filterWishList'],
-    methods:{
-        switchToGamesList(){
-            this.$emit('filterWishList',gamesTab);
+    methods: {
+        switchToGamesList() {
+            this.$emit('filterWishList', gamesTab);
             document.getElementById('gameslist').style.bold
         },
-        switchToWishlist(){
-            this.$emit('filterWishList',wishlistTab);
+        switchToWishlist() {
+            this.$emit('filterWishList', wishlistTab);
         }
-  }
+    }
 }
 </script>
 
@@ -30,29 +30,34 @@ export default{
 </template>
 
 <style scoped>
-    *{
-        font-family: Arial;
-    }
-    #header{
-        /*width: 100%;*/
-        width: 100%;
-        background-color: lightblue;
-    }
-    .header_bar{
-        display: flex;
-        background-color: dodgerblue;
-    }
-    .header_item{
-        width: 50%;
-        text-align: center;
-    }
-    #gameslist:hover{
-        background-color: lightblue;
-    }
-    #wishlist:hover{
-        background-color: lightblue;
-    }
-    h2:hover{
-        cursor: pointer;
-    }
-</style>
+* {
+    font-family: Arial;
+}
+
+#header {
+    /*width: 100%;*/
+    width: 100%;
+    background-color: lightblue;
+}
+
+.header_bar {
+    display: flex;
+    background-color: dodgerblue;
+}
+
+.header_item {
+    width: 50%;
+    text-align: center;
+}
+
+#gameslist:hover {
+    background-color: lightblue;
+}
+
+#wishlist:hover {
+    background-color: lightblue;
+}
+
+h2:hover {
+    cursor: pointer;
+}</style>

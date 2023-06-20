@@ -1,5 +1,5 @@
 <script>
-export default{
+export default {
 
 }
 </script>
@@ -9,10 +9,11 @@ export default{
 </template>
 
 <style scoped>
-    h1{
-        text-align: center;
-    }
-    *{
-        border: dotted;
-    }
+h1 {
+    text-align: center;
+}
+
+* {
+    border: dotted;
+}
 </style>
