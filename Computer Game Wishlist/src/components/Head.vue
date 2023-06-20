@@ -1,12 +1,16 @@
 <script>
+export const gamesTab = 0;
+export const wishlistTab = 1;
+
 export default{
     emits: ['filterWishList'],
     methods:{
         switchToGamesList(){
-            this.$emit('filterWishList',0);
+            this.$emit('filterWishList',gamesTab);
+            document.getElementById('gameslist').style.bold
         },
         switchToWishlist(){
-            this.$emit('filterWishList',1);
+            this.$emit('filterWishList',wishlistTab);
         }
   }
 }
@@ -16,10 +20,10 @@ export default{
     <div id="header">
         <div class="header_bar">
             <div class="header_item" role="button" id="gameslist" @click="switchToGamesList">
-                <h2>Neue Spiele</h2>
+                <h2>All Games</h2>
             </div>
             <div class="header_item" role="button" id="wishlist" @click="switchToWishlist">
-                <h2>Wunschliste</h2>
+                <h2>Wishlist</h2>
             </div>
         </div>
     </div>
@@ -30,6 +34,7 @@ export default{
         font-family: Arial;
     }
     #header{
+        /*width: 100%;*/
         width: 100%;
         background-color: lightblue;
     }

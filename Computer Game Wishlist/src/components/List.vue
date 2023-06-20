@@ -1,4 +1,6 @@
 <script>
+import FilterBar from './FilterBar.vue';
+
 export default{
     props: ['games'],
     emits: ['viewGame', 'addToWishlist'],
@@ -9,14 +11,18 @@ export default{
         addToWishlist(gameId){
             this.$emit('addToWishlist', gameId);
         }
+    },
+    components:{
+        FilterBar
     }
 }
 </script>
 
 <template>
+    <FilterBar></FilterBar>
     <table>
         <tr>
-            <th class="item">Cover</th>
+            <th class="cover">Cover</th>
             <th class="item">Title</th>
             <th class="item">Genre</th>
             <th class="item">Platform</th>
@@ -24,7 +30,7 @@ export default{
             <th class="item"></th>
         </tr>
         <tr v-for="game in games">
-            <td class="item"><img :src="game.thumbnail" alt="No picture available"></td>
+            <td class="cover"><img :src="game.thumbnail" alt="No picture available"></td>
             <td class="item">{{ game.title }}</td>
             <td class="item">{{ game.genre }}</td>
             <td class="item">{{ game.platform }}</td>
@@ -37,24 +43,41 @@ export default{
     </table> 
 </template>
 
-<style>
-    t
+<style scoped>
+    th{
+        font-size: 25px;
+    }  
+    td{
+        font-size: 18px;
+    } 
+    table, th, td{
+        border: 1px solid;
+        border-color: steelblue;
+        border-collapse: collapse;
+    }
+    th, td{
+        border-left: none;
+        border-right: none;
+    }
     .item{
-        height: 25px;
+        height: 75px;
         width: 10%;
-        text-align: center;
-        
+        text-align: left;
     }
     .btn{
         width: 50%;
+        height: 75px;
+        font-size: 18px;
     }
     table{
-        margin-top: 25px;
-        width: 90%;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
+        width: 100%;
     }
     img{
-        height: 50px;
+        height: 75px;
+    }
+    .cover{
+        width: 5%;
+        height: 75px;
+        text-align: left;
     }
 </style>

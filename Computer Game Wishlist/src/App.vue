@@ -55,7 +55,7 @@ export default{
 
 <template>
   <div>
-    <h1>Computer Games Wunschliste</h1>
+    <h1>Computer Games Wishlist</h1>
     <Head @filterWishList="setTab"></Head>
     <Body :selectedTab="tab" :games="gamesArray"></Body>
   </div>
@@ -68,5 +68,7 @@ export default{
     }
     h1{
         text-align: center;
+    }
+    div{
     }
 </style>
