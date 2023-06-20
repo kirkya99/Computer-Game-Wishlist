@@ -26,7 +26,7 @@ export default {
             <th class="item">Title</th>
             <th class="item">Genre</th>
             <th class="item">Platform</th>
-            <th class="item">Publisher</th>
+            <th class="item">Developer</th>
             <th class="item"></th>
         </tr>
     </table>
@@ -37,7 +37,7 @@ export default {
                 <td class="item">{{ game.title }}</td>
                 <td class="item">{{ game.genre }}</td>
                 <td class="item">{{ game.platform }}</td>
-                <td class="item">{{ game.publisher }}</td>
+                <td class="item">{{ game.developer }}</td>
                 <td class="item">
                     <button @click="viewGame(game.id)" class="btn">View Game</button>
                     <button @click="addToWishlist(game.id)" class="btn">Add to Wishlist</button>
