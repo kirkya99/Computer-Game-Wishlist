@@ -49,7 +49,7 @@ export default {
                 <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Open Game Webpage</a>
             </div>
             
-            <p>Page: {{ gameIndex + 1 }}</p>
+            <p>Page {{ currentGameIndex+1 }} of {{ games.length }}</p>
         </div>
     </div>
     <button @click="lastGame">Previous Game</button>
