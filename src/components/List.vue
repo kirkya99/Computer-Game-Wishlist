@@ -167,7 +167,7 @@ img {
 
 #scroll {
     overflow-y: scroll;
-    height: 625px;
+    height: 600px;
 }
 
 #headerRow {
