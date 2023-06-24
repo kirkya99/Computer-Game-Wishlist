@@ -5,7 +5,7 @@ Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen
 * Arjan Mavraj , 34197
 * Mike Tabler, 35922
 
-# Quellen
+## Quellen
 * API:  GET https://www.mmobomb.com/api1/games
 * Genutze API wegen CORS: https://mmo-games.p.rapidapi.com/games
     * Header:
