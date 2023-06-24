@@ -82,31 +82,35 @@ export default {
 </script>
 
 <template>
-    <FilterBar></FilterBar>
-    <table>
-        <tr id="headerRow">
-            <th class="cover">Cover</th>
-            <th class="item">Title</th>
-            <th class="item">Genre</th>
-            <th class="item">Platform</th>
-            <th class="item">Developer</th>
-            <th class="item"></th>
-        </tr>
-    </table>
-    <div id="scroll">
-        <table>
-            <tr v-for="game in games">
-                <td v-if="filterList(game)" class="cover"><img :src="game.thumbnail" alt="No picture available"></td>
-                <td v-if="filterList(game)" class="item">{{ game.title }}</td>
-                <td v-if="filterList(game)" class="item">{{ game.genre }}</td>
-                <td v-if="filterList(game)" class="item">{{ game.platform }}</td>
-                <td v-if="filterList(game)" class="item">{{ game.developer }}</td>
-                <td v-if="filterList(game)" class="item">
-                    <button @click="viewGame(game.id)" class="btn">View Game</button>
-                    <button @click="addToWishlist(game.id)" class="btn">Add to Wishlist</button>
-                </td>
-            </tr>
-        </table>
+    <FilterBar @filterGames="receiveFilter"></FilterBar>
+    <div id="tableBackground">
+        <div id="tableHeader">
+            <table>
+                <tr id="headerRow">
+                    <th class="cover" id="coverHead">Cover</th>
+                    <th class="item" id="titleHead">Title</th>
+                    <th class="item" id="genreHead">Genre</th>
+                    <th class="item" id="platformHead">Platform</th>
+                    <th class="item" id="developerHead">Developer</th>
+                    <th class="item"></th>
+                </tr>
+            </table>
+        </div>
+        <div id="scroll">
+            <table>
+                <tr v-for="game in games" id="bodyRows">
+                    <td v-if="filterList(game)" class="cover"><img :src="game.thumbnail" alt="No picture available"></td>
+                    <td v-if="filterList(game)" class="item">{{ game.title }}</td>
+                    <td v-if="filterList(game)" class="item">{{ game.genre }}</td>
+                    <td v-if="filterList(game)" class="item">{{ game.platform }}</td>
+                    <td v-if="filterList(game)" class="item">{{ game.developer }}</td>
+                    <td v-if="filterList(game)" class="item">
+                        <button @click="viewGame(game.id)" class="btn">View Game</button>
+                        <button @click="addToWishlist(game.id)" class="btn">Add to Wishlist</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -174,4 +178,21 @@ img {
 tr {
     background-color: lightblue;
 }
+
+#tableBackground {
+    background-color: steelblue;
+}
+#titleHead {
+    padding-left: 30px;
+}
+#genreHead {
+    padding-left: 25px
+}
+#platformHead {
+    padding-left: 15px;
+}
+#developerHead {
+    padding-left: 5px;
+}
+
 </style>
