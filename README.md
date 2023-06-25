@@ -18,6 +18,7 @@ Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen
         * 'X-RapidAPI-Host': 'mmo-games.p.rapidapi.com'
 
 ## Auflistung der verwendeten fremden Codebestandteile
+* main.js:8 von https://vuetifyjs.com/en/getting-started/installation/
 
 ## Anweisungen, um die Anwendung zu starten
 * npm install

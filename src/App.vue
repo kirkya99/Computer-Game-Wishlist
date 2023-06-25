@@ -1,6 +1,13 @@
 <script>
-import Head from './components/Head.vue';
-import Body from './components/Body.vue';
+export const listViewTab = 0;
+export const wishlistTab = 1;
+export const legalNotiveTab = 2;
+
+export const singleGameViewTab = 1;
+
+
+import List from './components/List.vue';
+import Game from './components/Game.vue';
 import axios from 'axios';
 
 export default {
@@ -8,7 +15,7 @@ export default {
         this.fetchGamesList()
     },
     components: {
-        Head, Body
+        List, Game
     },
     methods: {
         setTab(value) {
@@ -33,12 +40,28 @@ export default {
                     this.gamesArray = response.data
                 })
                 .catch(console.error);
+        },
+        showGame(gameId) {
+            this.findGame(gameId);
+            this.selectedView = singleGameViewTab;
+        },
+        findGame(gameId) {
+            this.selectedGameIndex = 0
+            while (gameId != this.gamesArray[this.selectedGameIndex].id) {
+                this.selectedGameIndex++;
+            }
+        },
+        showList() {
+            this.selectedView = listViewTab
         }
     },
     data() {
         return {
-            tab: 0,
+            tab: listViewTab,
             gamesArray: [],
+            selectedView: listViewTab,
+            selectedGameIndex: 0,
+            wishlist: [],
         }
     }
 }
@@ -56,18 +79,21 @@ export default {
             </v-tabs>
             <v-window v-model="tab">
                 <v-window-item :value="0">
-
+                    <div v-show="selectedView == 0">
+                        <List :games="gamesArray" @viewGame="showGame"></List>
+                    </div>
+                    <div v-show="selectedView == 1">
+                        <Game @returnToList="showList" :gameIndex="selectedGameIndex" :games="gamesArray"></Game>
+                    </div>
                 </v-window-item>
                 <v-window-item :value="1">
-
+                    <h2>Wishlist</h2>
                 </v-window-item>
                 <v-window-item :value="2">
-                    
+                    <h2>Legal Notice</h2>
                 </v-window-item>
             </v-window>
         </v-card>
-
-        <Body :selectedTab="tab" :games="gamesArray"></Body>
     </div>
 </template>
 
@@ -84,6 +110,8 @@ v-tabs {
 
 h1 {
     text-align: center;
+    padding: 1%;
+    color: white;
 }
 
 .tabs {

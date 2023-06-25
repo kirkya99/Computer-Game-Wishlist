@@ -5,8 +5,8 @@ export const next = 1;
 export default {
     props: ['gameIndex', 'games'],
     emits: ['returnToList'],
-    data(){
-        return{
+    data() {
+        return {
             currentGameIndex: this.gameIndex
         }
     },
@@ -20,13 +20,12 @@ export default {
             this.$emit('returnToList')
         },
         nextGame() {
-            if(this.currentGameIndex + 1 < this.games.length)
-            {
+            if (this.currentGameIndex + 1 < this.games.length) {
                 this.currentGameIndex = this.currentGameIndex + 1
             }
         },
 
-        lastGame() {
+        prevGame() {
             if (this.currentGameIndex != 0) {
                 this.currentGameIndex = this.currentGameIndex - 1
             }
@@ -37,22 +36,47 @@ export default {
 </script>
 
 <template>
-    <div id="page">
-        <div v-if="games.length">
-            <div class="gameDetails">
-                <h2>{{ currentGame.title }}</h2>
-                <img :src="currentGame.thumbnail" alt="No Picture available" />
-                <p>Developer: {{ currentGame.developer }}</p>
-                <p>Publisher: {{ currentGame.publisher }}</p>
-                <p>Release Date: {{ currentGame.release_date }}</p>
-                <p>{{ currentGame.short_description }}</p>
-                <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Open Game Webpage</a>
+    <div id="backgroundPage">
+        <div id="page">
+            <div class="headerBar">
+                <v-btn @click="prevGame" color="blue">Previous Game</v-btn>
+                <v-btn @click="quitView" color="blue">Return to List</v-btn>
+                <v-btn @click="nextGame" color="blue">Next Game</v-btn>
             </div>
-            
-            <p>Page {{ currentGameIndex+1 }} of {{ games.length }}</p>
+            <div v-if="games.length">
+                <div class="gameDetails">
+                    <h2>{{ currentGame.title }}</h2>
+                    <img :src="currentGame.thumbnail" alt="No Picture available" />
+                    <p>Developer: {{ currentGame.developer }}</p>
+                    <p>Publisher: {{ currentGame.publisher }}</p>
+                    <p>Release Date: {{ currentGame.release_date }}</p>
+                    <p>{{ currentGame.short_description }}</p>
+                    <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Open Game Webpage</a>
+                </div>
+
+            </div>
         </div>
     </div>
-    <v-btn @click="lastGame">Previous Game</v-btn>
-    <v-btn @click="nextGame">Next Game</v-btn>
-    <v-btn @click="quitView">Return to List</v-btn>
 </template>
+
+<style scoped>
+#backgroundPage {
+    height: 950px;
+}
+
+#page {
+    margin-bottom: 0px;
+    height: 95%;
+    background-color: white;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headerBar{
+    padding: 1%;
+    width: 98%;
+}
+v-btn{
+    width: 33%;
+}
+</style>

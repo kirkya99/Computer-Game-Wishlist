@@ -21,7 +21,7 @@ export default {
             let genre = game.genre.toLowerCase();
             let platform = game.platform.toLowerCase();
             let developer = game.developer.toLowerCase();
-            if (this.filterTitle.localeCompare("") == 0) {
+            if (this.filterTitle.localeCompare('') == 0) {
                 boolTitle = true;
             }
             else {
@@ -30,7 +30,7 @@ export default {
                 }
             }
 
-            if (this.filterGenre.localeCompare("") == 0) {
+            if (this.filterGenre.localeCompare('') == 0) {
                 boolGenre = true;
             }
             else {
@@ -72,10 +72,10 @@ export default {
     },
     data() {
         return {
-            filterTitle: "",
-            filterGenre: "",
-            filterPlatform: "",
-            filterDeveloper: ""
+            filterTitle: '',
+            filterGenre: '',
+            filterPlatform: '',
+            filterDeveloper: ''
         }
     }
 }
@@ -105,8 +105,8 @@ export default {
                     <td v-if="filterList(game)" class="item">{{ game.platform }}</td>
                     <td v-if="filterList(game)" class="item">{{ game.developer }}</td>
                     <td v-if="filterList(game)" class="item">
-                        <v-btn @click="viewGame(game.id)" class="btn">View Game</v-btn>
-                        <v-btn @click="addToWishlist(game.id)" class="btn">Add to Wishlist</v-btn>
+                        <v-btn @click="viewGame(game.id)" class="btn" variant="outlined">View Game</v-btn>
+                        <v-btn @click="addToWishlist(game.id)" class="btn" variant="outlined">Add to Wishlist</v-btn>
                     </td>
                 </tr>
             </table>
