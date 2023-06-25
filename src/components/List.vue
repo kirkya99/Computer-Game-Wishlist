@@ -87,7 +87,7 @@ export default {
         <div id="tableHeader">
             <table>
                 <tr id="headerRow">
-                    <th class="cover" id="coverHead">Cover</th>
+                    <th class="cover" id="coverHead"></th>
                     <th class="item" id="titleHead">Title</th>
                     <th class="item" id="genreHead">Genre</th>
                     <th class="item" id="platformHead">Platform</th>
@@ -105,8 +105,8 @@ export default {
                     <td v-if="filterList(game)" class="item">{{ game.platform }}</td>
                     <td v-if="filterList(game)" class="item">{{ game.developer }}</td>
                     <td v-if="filterList(game)" class="item">
-                        <button @click="viewGame(game.id)" class="btn">View Game</button>
-                        <button @click="addToWishlist(game.id)" class="btn">Add to Wishlist</button>
+                        <v-btn @click="viewGame(game.id)" class="btn">View Game</v-btn>
+                        <v-btn @click="addToWishlist(game.id)" class="btn">Add to Wishlist</v-btn>
                     </td>
                 </tr>
             </table>
@@ -147,7 +147,9 @@ td {
 .btn {
     width: 50%;
     height: 75px;
-    font-size: 18px;
+    font-size: 15px;
+    font-family: Arial;
+
 }
 
 table {
@@ -167,7 +169,7 @@ img {
 
 #scroll {
     overflow-y: scroll;
-    height: 600px;
+    height: 750px;
 }
 
 #headerRow {

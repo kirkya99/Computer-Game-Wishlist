@@ -48,8 +48,24 @@ export default {
 <template>
     <div>
         <h1>Computer Games Wishlist</h1>
+        <v-card>
+            <v-tabs fixed-tabs v-model="tab" bg-color="blue">
+                <v-tab :value="0">All Games</v-tab>
+                <v-tab :value="1">Wishlist</v-tab>
+                <v-tab :value="2">Legal Notice</v-tab>
+            </v-tabs>
+            <v-window v-model="tab">
+                <v-window-item :value="0">
 
-        <Head @filterWishList="setTab"></Head>
+                </v-window-item>
+                <v-window-item :value="1">
+
+                </v-window-item>
+                <v-window-item :value="2">
+                    
+                </v-window-item>
+            </v-window>
+        </v-card>
 
         <Body :selectedTab="tab" :games="gamesArray"></Body>
     </div>
@@ -57,10 +73,20 @@ export default {
 
 <style scoped>
 * {
+    background-color: #0D47A1;
     font-family: Arial;
 }
 
+v-tabs {
+    width: 100%;
+}
+
+
 h1 {
     text-align: center;
+}
+
+.tabs {
+    background-color: steelblue;
 }
 </style>

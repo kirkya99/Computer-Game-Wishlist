@@ -35,9 +35,10 @@ export default {
 }
 
 #header {
-    /*width: 100%;*/
     width: 100%;
+    height: 75px;
     background-color: lightblue;
+    align-items: center;
 }
 
 .header_bar {
@@ -46,8 +47,10 @@ export default {
 }
 
 .header_item {
-    width: 50%;
+    width: 100%;
+    height: 75px;
     text-align: center;
+
 }
 
 #gameslist:hover {
@@ -60,4 +63,5 @@ export default {
 
 h2:hover {
     cursor: pointer;
-}</style>
+}
+</style>

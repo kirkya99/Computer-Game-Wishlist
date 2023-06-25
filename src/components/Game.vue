@@ -52,7 +52,7 @@ export default {
             <p>Page {{ currentGameIndex+1 }} of {{ games.length }}</p>
         </div>
     </div>
-    <button @click="lastGame">Previous Game</button>
-    <button @click="nextGame">Next Game</button>
-    <button @click="quitView">Return to List</button>
+    <v-btn @click="lastGame">Previous Game</v-btn>
+    <v-btn @click="nextGame">Next Game</v-btn>
+    <v-btn @click="quitView">Return to List</v-btn>
 </template>
