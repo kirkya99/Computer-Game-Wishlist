@@ -39,21 +39,44 @@ export default {
     <div id="backgroundPage">
         <div id="page">
             <div class="headerBar">
-                <v-btn @click="prevGame" color="blue">Previous Game</v-btn>
-                <v-btn @click="quitView" color="blue">Return to List</v-btn>
-                <v-btn @click="nextGame" color="blue">Next Game</v-btn>
+                <div id="leftButton">
+                    <v-btn @click="prevGame" color="blue" class="btn">Previous Game</v-btn>
+                </div>
+                <div id="middleButton">
+                    <v-btn @click="quitView" color="blue" class="btn">Return to List</v-btn>
+                </div>
+                <div id="rightButton">
+                    <v-btn @click="nextGame" color="blue" class="btn">Next Game</v-btn>
+                </div>
             </div>
-            <div v-if="games.length">
-                <div class="gameDetails">
+            <div v-if="games.length" class="gameDetails">
+
+                <div class="meta">
+
                     <h2>{{ currentGame.title }}</h2>
                     <img :src="currentGame.thumbnail" alt="No Picture available" />
-                    <p>Developer: {{ currentGame.developer }}</p>
-                    <p>Publisher: {{ currentGame.publisher }}</p>
-                    <p>Release Date: {{ currentGame.release_date }}</p>
-                    <p>{{ currentGame.short_description }}</p>
-                    <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Open Game Webpage</a>
                 </div>
+                <div class="flex">
+                    <div class="info">
+                        <p><b>Genre:</b> {{ currentGame.genre }}</p>
+                        <p><b>Platform:</b> {{ currentGame.platform }}</p>
+                    </div>
+                    <div class="info">
+                        <p><b>Release Date:</b> {{ currentGame.release_date }}</p>
+                        <p><b>Developer:</b> {{ currentGame.developer }}</p>
+                        <p><b>Publisher:</b> {{ currentGame.publisher }}</p>
+                    </div>
+                    
+                </div>
+                <div class="description">
+                        <p><b>Game Description:</b></p>
+                        <p>{{ currentGame.short_description }}</p>
+                    </div>
 
+
+
+                <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Click here to open the developer
+                    page</a>
             </div>
         </div>
     </div>
@@ -72,11 +95,58 @@ export default {
     margin-left: auto;
     margin-right: auto;
 }
-.headerBar{
+
+.headerBar {
+    display: flex;
     padding: 1%;
-    width: 98%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
-v-btn{
-    width: 33%;
+
+img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#leftButton {
+    text-align: left;
+    width: 100%;
+}
+
+#middleButton {
+    text-align: center;
+    width: 100%;
+}
+
+#rightButton {
+    text-align: right;
+    width: 100%;
+}
+
+.btn {
+    width: 50%;
+}
+
+.gameDetails {
+    width: 60%;
+    border: dotted;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meta {
+    width: 100%;
+    border: dotted;
+    text-align: center;
+}
+.flex{
+    display: flex;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info {
+    width: 100%;
 }
 </style>
