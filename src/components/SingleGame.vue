@@ -130,14 +130,12 @@ img {
 
 .gameDetails {
     width: 60%;
-    border: dotted;
     margin-left: auto;
     margin-right: auto;
 }
 
 .meta {
     width: 100%;
-    border: dotted;
     text-align: center;
 }
 .flex{
