@@ -10,6 +10,9 @@ export default {
             currentGameIndex: this.gameIndex
         }
     },
+    updated() {
+        this.currentGameIndex = this.gameIndex
+    },
     computed: {
         currentGame() {
             return this.games[this.currentGameIndex]

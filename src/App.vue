@@ -46,7 +46,6 @@ export default {
 
             axios.request(options)
                 .then(response => {
-                    console.log(response.data)
                     this.gamesArray = response.data
                 })
                 .catch(console.error);
@@ -78,19 +77,19 @@ export default {
             this.selectedViewWishlist = listViewTab
         },
         addToWishlist(gameId) {
-            let i = 0;
-            let existsInWishlist = false;
-            this.findGameFromList(gameId);
+            let i = 0
+            let existsInWishlist = false
+            this.findGameFromList(gameId)
             for (i; i < this.wishlistArray.length; i++) {
                 if (this.wishlistArray[i].id == gameId) {
-                    existsInWishlist = true;
+                    existsInWishlist = true
                 }
             }
             if (existsInWishlist == true) {
-                alert("The game " + this.gamesArray[this.selectedGameIndex].title + " is already on the wishlist!");
+                alert(`The game '${this.gamesArray[i].title}' is already on the wishlist!`)
             }
             else {
-                this.wishlistArray.push(this.gamesArray[this.selectedGameIndex]);
+                this.wishlistArray.push(this.gamesArray[this.selectedGameIndexAllGames])
             }
 
             //Cookies.set('wishlist', JSON.stringify(this.wishlistArray));
@@ -99,7 +98,7 @@ export default {
 
         removeFromWishlist(gameId) {
             this.findGameFromWishlist(gameId)
-            this.wishlistArray.splice(this.selectedGameIndex, 1);
+            this.wishlistArray.splice(this.selectedGameIndexFromWishlist, 1);
            // this.$cookie.set('wishlist', JSON.stringify(this.wishlistArrayArray));
         }/*,
 
