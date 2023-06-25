@@ -29,6 +29,9 @@ export default {
             if (this.currentGameIndex != 0) {
                 this.currentGameIndex = this.currentGameIndex - 1
             }
+        },
+        openDeveloperPage(url) {
+            window.open(url, '_blank')
         }
     }
 }
@@ -66,17 +69,15 @@ export default {
                         <p><b>Developer:</b> {{ currentGame.developer }}</p>
                         <p><b>Publisher:</b> {{ currentGame.publisher }}</p>
                     </div>
-                    
                 </div>
                 <div class="description">
-                        <p><b>Game Description:</b></p>
-                        <p>{{ currentGame.short_description }}</p>
-                    </div>
-
-
-
-                <a :href="currentGame.game_url" target="_blank" rel="noreferrer noopener">Click here to open the developer
-                    page</a>
+                    <p><b>Game Description:</b></p>
+                    <p>{{ currentGame.short_description }}</p>
+                </div>
+                <div id="site">
+                    <v-btn color="blue" class="btn" @click="openDeveloperPage(currentGame.game_url)">Open developer
+                        page</v-btn>
+                </div>
             </div>
         </div>
     </div>
@@ -138,13 +139,30 @@ img {
     width: 100%;
     text-align: center;
 }
-.flex{
+
+.flex {
     display: flex;
-    width: 75%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
+
 .info {
     width: 100%;
+}
+
+.description {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meta>img {
+    margin: 2.5%
+}
+
+#site {
+    margin: 5%;
+    text-align: center;
 }
 </style>
