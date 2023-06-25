@@ -99,12 +99,12 @@ export default {
         <div id="scroll">
             <table>
                 <tr v-for="game in games" id="bodyRows">
-                    <td v-if="filterList(game)" class="cover"><img :src="game.thumbnail" alt="No picture available"></td>
-                    <td v-if="filterList(game)" class="item">{{ game.title }}</td>
-                    <td v-if="filterList(game)" class="item">{{ game.genre }}</td>
-                    <td v-if="filterList(game)" class="item">{{ game.platform }}</td>
-                    <td v-if="filterList(game)" class="item">{{ game.developer }}</td>
-                    <td v-if="filterList(game)" class="item">
+                    <td v-show="filterList(game)" class="cover"><img :src="game.thumbnail" alt="No picture available"></td>
+                    <td v-show="filterList(game)" class="item">{{ game.title }}</td>
+                    <td v-show="filterList(game)" class="item">{{ game.genre }}</td>
+                    <td v-show="filterList(game)" class="item">{{ game.platform }}</td>
+                    <td v-show="filterList(game)" class="item">{{ game.developer }}</td>
+                    <td v-show="filterList(game)" class="item">
                         <v-btn @click="viewGame(game.id)" class="btn" variant="outlined">View Game</v-btn>
                         <v-btn @click="addToWishlist(game.id)" class="btn" variant="outlined">Add to Wishlist</v-btn>
                     </td>
@@ -163,8 +163,8 @@ img {
 .cover {
     width: 5%;
     height: 75px;
-    text-align: left;
-    align-self: center;
+    padding-left: 5px;
+    margin-right: auto;
 }
 
 #scroll {
@@ -183,6 +183,7 @@ tr {
 
 #tableBackground {
     background-color: steelblue;
+    height: 850px;
 }
 #titleHead {
     padding-left: 30px;
@@ -196,5 +197,4 @@ tr {
 #developerHead {
     padding-left: 5px;
 }
-
 </style>

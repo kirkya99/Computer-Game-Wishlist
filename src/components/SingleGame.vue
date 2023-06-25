@@ -61,13 +61,13 @@ export default {
 
 <style scoped>
 #backgroundPage {
-    height: 950px;
+    height: 967px;
 }
 
 #page {
     margin-bottom: 0px;
     height: 95%;
-    background-color: white;
+    background-color: lightblue;
     width: 60%;
     margin-left: auto;
     margin-right: auto;

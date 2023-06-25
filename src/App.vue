@@ -6,16 +6,18 @@ export const legalNotiveTab = 2;
 export const singleGameViewTab = 1;
 
 
-import List from './components/List.vue';
-import Game from './components/Game.vue';
+import GamesList from './components/GamesList.vue';
+import SingleGame from './components/SingleGame.vue';
+import WishList from './components/WishList.vue';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default {
     created() {
         this.fetchGamesList()
     },
     components: {
-        List, Game
+        GamesList, SingleGame, WishList
     },
     methods: {
         setTab(value) {
@@ -53,6 +55,24 @@ export default {
         },
         showList() {
             this.selectedView = listViewTab
+        },
+        addToWishlist(gameId){
+            this.findGame(gameId);
+            this.wishlist.push(this.selectedGameIndex);
+            Cookies.set('wishlist', JSON.stringify(this.wishlist));
+        },
+
+        removeFromWishlist(gameId){
+            this.findGame(gameId)
+            this.wishlist.splice(this.selectedGameIndex);
+            this.$cookie.set('wishlist', JSON.stringify(this.wishlist));
+        },
+
+        restoreWishlistFromCookies(){
+            const cookieWishlist = Cookies.get('wishlist');
+            if(cookieWishlist){
+                this.wishlist = JSON.parse(cookieWishlist);
+            }
         }
     },
     data() {
@@ -69,7 +89,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div id="frame">
         <h1>Computer Games Wishlist</h1>
         <v-card>
             <v-tabs fixed-tabs v-model="tab" bg-color="blue">
@@ -80,17 +100,22 @@ export default {
             <v-window v-model="tab">
                 <v-window-item :value="0">
                     <div v-show="selectedView == 0">
-                        <List :games="gamesArray" @viewGame="showGame"></List>
+                        <GamesList :games="gamesArray" @viewGame="showGame"></GamesList>
                     </div>
                     <div v-show="selectedView == 1">
-                        <Game @returnToList="showList" :gameIndex="selectedGameIndex" :games="gamesArray"></Game>
+                        <SingleGame @returnToList="showList" :gameIndex="selectedGameIndex" :games="gamesArray">
+                        </SingleGame>
                     </div>
                 </v-window-item>
                 <v-window-item :value="1">
-                    <h2>Wishlist</h2>
+                    <WishList></WishList>
                 </v-window-item>
                 <v-window-item :value="2">
-                    <h2>Legal Notice</h2>
+                    <div id="legalNoticeTab">
+                        <div id="page">
+
+                        </div>
+                    </div>
                 </v-window-item>
             </v-window>
         </v-card>
@@ -116,5 +141,17 @@ h1 {
 
 .tabs {
     background-color: steelblue;
+}
+
+#legalNoticeTab {
+    height: 967px;
+}
+
+#page {
+    background-color: lightblue;
+    width: 60%;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
