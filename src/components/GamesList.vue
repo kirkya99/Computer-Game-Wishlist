@@ -3,10 +3,10 @@ import FilterBar from './FilterBar.vue';
 
 export default {
     props: ['games'],
-    emits: ['viewGame', 'addToWishlist'],
+    emits: ['viewGameFromAllGames', 'addToWishlist'],
     methods: {
         viewGame(gameId) {
-            this.$emit('viewGame', gameId);
+            this.$emit('viewGameFromAllGames', gameId);
         },
         addToWishlist(gameId) {
             this.$emit('addToWishlist', gameId);

@@ -3,8 +3,80 @@ import FilterBar from './FilterBar.vue';
 
 export default {
     props: ['wishlist'],
+    emits: ['deleteFromWishlist', 'viewGameFromWishlist'],
     components: {
         FilterBar
+    },
+    data() {
+        return {
+            filterTitle: '',
+            filterGenre: '',
+            filterPlatform: '',
+            filterDeveloper: ''
+        }
+    },
+    methods: {
+        viewGame(gameId) {
+            this.$emit('viewGameFromWishlist', gameId);
+        },
+        filterList(game) {
+            let boolTitle = false;
+            let boolGenre = false;
+            let boolPlatform = false;
+            let boolDeveloper = false;
+            let boolean;
+            let title = game.title.toLowerCase();
+            let genre = game.genre.toLowerCase();
+            let platform = game.platform.toLowerCase();
+            let developer = game.developer.toLowerCase();
+            if (this.filterTitle.localeCompare('') == 0) {
+                boolTitle = true;
+            }
+            else {
+                if (title.includes(this.filterTitle)) {
+                    boolTitle = true;
+                }
+            }
+
+            if (this.filterGenre.localeCompare('') == 0) {
+                boolGenre = true;
+            }
+            else {
+                if (genre.includes(this.filterGenre)) {
+                    boolGenre = true;
+                }
+            }
+
+            if (this.filterPlatform.localeCompare("") == 0) {
+                boolPlatform = true;
+            }
+            else {
+                if (platform.includes(this.filterPlatform)) {
+                    boolPlatform = true;
+                }
+            }
+
+            if (this.filterDeveloper.localeCompare("") == 0) {
+                boolDeveloper = true;
+            }
+            else {
+                if (developer.includes(this.filterDeveloper)) {
+                    boolDeveloper = true;
+                }
+            }
+
+            boolean = boolTitle && boolGenre && boolPlatform && boolDeveloper;
+            return boolean;
+        },
+        receiveFilter(title, genre, platform, developer) {
+            this.filterTitle = title.toLowerCase();
+            this.filterGenre = genre.toLowerCase();
+            this.filterPlatform = platform.toLowerCase();
+            this.filterDeveloper = developer.toLowerCase();
+        },
+        removeFromWishlist(gameId) {
+            this.$emit('deleteFromWishlist', gameId);
+        }
     }
 
 }
@@ -36,7 +108,7 @@ export default {
                     <td v-show="filterList(game)" class="item">{{ game.developer }}</td>
                     <td v-show="filterList(game)" class="item">
                         <v-btn @click="viewGame(game.id)" class="btn" variant="outlined">View Game</v-btn>
-                        <v-btn @click="addToWishlist(game.id)" class="btn" variant="outlined">Remove from Wishlist</v-btn>
+                        <v-btn @click="removeFromWishlist(game.id)" class="btn" variant="outlined">Remove</v-btn>
                     </td>
                 </tr>
             </table>
@@ -130,4 +202,5 @@ tr {
 
 #developerHead {
     padding-left: 5px;
-}</style>
+}
+</style>
