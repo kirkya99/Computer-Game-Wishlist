@@ -79,7 +79,7 @@ h1 {
 }
 
 .input {
-    width: 350px;
+    width: 95%;
     margin: auto;
     margin-top: auto;
 }
