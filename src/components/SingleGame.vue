@@ -44,21 +44,11 @@ export default {
 <template>
     <div id="backgroundPage">
         <div id="page">
-            <div class="headerBar">
-                <div id="leftButton">
-                    <v-btn @click="prevGame" variant="outlined" color="black" class="btn">Previous Game</v-btn>
-                </div>
-                <div id="middleButton">
-                    <v-btn @click="quitView" variant="outlined" color="black" class="btn">Return to List</v-btn>
-                </div>
-                <div id="rightButton">
-                    <v-btn @click="nextGame" variant="outlined" color="black" class="btn">Next Game</v-btn>
-                </div>
+            <div id="returnBtn">
+                <v-btn @click="quitView" variant="outlined" class="btn">Return to List</v-btn>
             </div>
             <div v-if="games.length" class="gameDetails">
-
                 <div class="meta">
-
                     <h2>{{ currentGame.title }}</h2>
                     <img :src="currentGame.thumbnail" alt="No Picture available" />
                 </div>
@@ -77,8 +67,8 @@ export default {
                     <p><b>Game Description:</b></p>
                     <p>{{ currentGame.short_description }}</p>
                 </div>
-                <div id="site">
-                    <v-btn color="blue" class="btn" @click="openDeveloperPage(currentGame.game_url)">Open developer
+                <div id="openDeveloperPageBtn">
+                    <v-btn variant="outlined" class="btn" @click="openDeveloperPage(currentGame.game_url)">Open developer
                         page</v-btn>
                 </div>
             </div>
@@ -100,36 +90,24 @@ export default {
     margin-right: auto;
 }
 
-.headerBar {
-    display: flex;
-    padding: 1%;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 img {
     margin-left: auto;
     margin-right: auto;
 }
 
-#leftButton {
-    text-align: left;
-    width: 100%;
-}
-
-#middleButton {
+#returnBtn {
     text-align: center;
-    width: 100%;
-}
-
-#rightButton {
-    text-align: right;
-    width: 100%;
+    width: 50%;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn {
-    width: 50%;
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .gameDetails {
@@ -164,8 +142,9 @@ img {
     margin: 2.5%
 }
 
-#site {
+#openDeveloperPageBtn {
     margin: 5%;
     text-align: center;
+    ;
 }
 </style>

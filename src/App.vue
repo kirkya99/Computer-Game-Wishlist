@@ -1,10 +1,9 @@
 <script>
-export const listViewTab = 0;
+export const allGamesTab = 0;
 export const wishlistTab = 1;
 export const legalNotiveTab = 2;
-
-export const singleGameViewTab = 1;
-
+export const listView = 0;
+export const singleGameView = 1;
 
 import GamesList from './components/GamesList.vue';
 import SingleGame from './components/SingleGame.vue';
@@ -14,7 +13,8 @@ import axios from 'axios';
 export default {
     created() {
         this.fetchGamesList()
-        this.getTab()
+        //this.getTab()
+        this.restoreApplicationFromStorage()
     },
     mounted() {
         this.restoreWishlistFromCookies()
@@ -24,13 +24,13 @@ export default {
     },
     data() {
         return {
-            tab: listViewTab,
+            tab: allGamesTab,
             gamesArray: [],
-            selectedViewAllGames: 0,
-            selectedViewWishlist: 0,
+            wishlistArray: [],
+            selectedViewAllGames: listView,
+            selectedViewWishlist: listView,
             selectedGameIndexAllGames: 0,
-            selectedGameIndexWishlist: 0,
-            wishlistArray: []
+            selectedGameIndexWishlist: 0
         }
     },
     methods: {
@@ -54,35 +54,36 @@ export default {
                 .catch(console.error);
         },
         showGameFromList(gameId) {
-            this.findGameFromList(gameId);
-            this.selectedViewAllGames = singleGameViewTab;
+            let index = this.findGame(gameId, this.gamesArray)
+            this.selectedViewAllGames = singleGameView;
+            this.selectedGameIndexAllGames = index
+            sessionStorage.setItem('allGamesView', singleGameView)
         },
         showGameFromWishlist(gameId) {
-            this.findGameFromList(gameId)
-            this.selectedViewWishlist = singleGameViewTab;
+            let index = this.findGame(gameId, this.gamesArray)
+            this.selectedViewWishlist = singleGameView;
+            this.selectedGameIndexWishlist = index
+            sessionStorage.setItem('wishlistView', singleGameView)
         },
-        findGameFromList(gameId) {
-            this.selectedGameIndexAllGames = 0
-            while (gameId != this.gamesArray[this.selectedGameIndexAllGames].id) {
-                this.selectedGameIndexAllGames++;
+        findGame(gameId, array) {
+            let index = 0
+            while (gameId != array[index].id) {
+                index++
             }
-        },
-        findGameFromWishlist(gameId) {
-            this.selectedGameIndexWishlist = 0
-            while (gameId != this.wishlistArray[this.selectedGameIndexWishlist].id) {
-                this.selectedGameIndexWishlist++;
-            }
+            return index
         },
         showListAllGames() {
-            this.selectedViewAllGames = listViewTab
+            this.selectedViewAllGames = listView
+            sessionStorage.setItem('allGamesView', listView)
         },
         showListWishlist() {
-            this.selectedViewWishlist = listViewTab
+            this.selectedViewWishlist = listView
+            sessionStorage.setItem('wishlistView', listView)
         },
         addToWishlist(gameId) {
-            let i = 0
             let existsInWishlist = false
-            this.findGameFromList(gameId)
+            let index = this.findGame(gameId, this.gamesArray)
+            let i = 0
             for (i; i < this.wishlistArray.length; i++) {
                 if (this.wishlistArray[i].id == gameId) {
                     existsInWishlist = true
@@ -92,21 +93,17 @@ export default {
                 alert(`The game '${this.gamesArray[i].title}' is already on the wishlist!`)
             }
             else {
-                this.wishlistArray.push(this.gamesArray[this.selectedGameIndexAllGames])
+                this.wishlistArray.push(this.gamesArray[index])
             }
             sessionStorage.setItem('wishlist', JSON.stringify(this.wishlistArray))
-            //jsCookie.set('wishlist', JSON.stringify(this.wishlistArray));
         },
         removeFromWishlist(gameId) {
-            this.findGameFromWishlist(gameId)
-            //let index = this.selectedGameIndexWishlist
-            this.wishlistArray.splice(this.selectedGameIndexWishlist, 1)
+            let index = this.findGame(gameId, this.wishlistArray)
+            this.wishlistArray.splice(index, 1)
             sessionStorage.setItem('wishlist', JSON.stringify(this.wishlistArray))
-            //jsCookie.set('wishlist', JSON.stringify(this.wishlistArray));
         },
 
         restoreWishlistFromCookies() {
-            //const cookieWishlist = jsCookie.get('wishlist');
             const cookieWishlist = sessionStorage.getItem('wishlist')
             if (cookieWishlist) {
                 this.wishlistArray = JSON.parse(cookieWishlist);
@@ -117,6 +114,11 @@ export default {
         },
         getTab() {
             this.tab = sessionStorage.getItem('tab')
+        },
+        restoreApplicationFromStorage() {
+            this.tab = sessionStorage.getItem('tab')
+            this.selectedGameIndexAllGames = sessionStorage.getItem('allGamesView')
+            this.selectedGameIndexWishlist = sessionStorage.getItem('wishlistView')
         }
     }
 }
@@ -151,16 +153,14 @@ export default {
                             @deleteFromWishlist="removeFromWishlist"></WishList>
                     </div>
                     <div v-show="selectedViewWishlist == 1">
-                        <!--<SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist"
-                            :games="wishlistArray">
-                        </SingleGame>-->
-                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexAllGames" :games="gamesArray"></SingleGame>
+                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist"
+                            :games="gamesArray"></SingleGame>
                     </div>
                 </v-window-item>
                 <v-window-item :value="2">
                     <div id="legalNoticeTab">
                         <div id="page">
-
+                            
                         </div>
                     </div>
                 </v-window-item>
@@ -184,10 +184,6 @@ h1 {
     text-align: center;
     padding: 1%;
     color: white;
-}
-
-.tabs {
-    background-color: steelblue;
 }
 
 #legalNoticeTab {

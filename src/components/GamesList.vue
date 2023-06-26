@@ -186,15 +186,19 @@ tr {
     background-color: steelblue;
     height: 850px;
 }
+
 #titleHead {
     padding-left: 30px;
 }
+
 #genreHead {
     padding-left: 25px
 }
+
 #platformHead {
     padding-left: 15px;
 }
+
 #developerHead {
     padding-left: 5px;
 }

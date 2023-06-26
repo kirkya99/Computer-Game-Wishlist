@@ -78,7 +78,6 @@ export default {
             this.$emit('deleteFromWishlist', gameId);
         }
     }
-
 }
 
 </script>

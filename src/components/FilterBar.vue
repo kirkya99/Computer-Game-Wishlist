@@ -15,10 +15,10 @@ export default {
     },
     methods: {
         filterGamesList() {
-            if(this.selectedGenre === 'All') {
+            if (this.selectedGenre === 'All') {
                 this.selectedGenre = ''
             }
-            if(this.selectedPlatform === 'All') {
+            if (this.selectedPlatform === 'All') {
                 this.selectedPlatform = ''
             }
             this.$emit('filterGames', this.selectedTitle, this.selectedGenre, this.selectedPlatform, this.selectedDeveloper)
@@ -29,7 +29,7 @@ export default {
             this.selectedPlatform = ''
             this.selectedDeveloper = ''
             this.filterGamesList()
-        } 
+        }
     }
 }
 </script>
@@ -37,18 +37,20 @@ export default {
 <template>
     <div class="flex-container">
         <div>
-            <v-text-field label="Filter Title" v-model="selectedTitle" variant="outlined" class="input" bg-color="blue-darken-2"></v-text-field>
+            <v-text-field label="Filter Title" v-model="selectedTitle" variant="outlined" class="input"
+                bg-color="blue-darken-2"></v-text-field>
         </div>
         <div>
-            <v-autocomplete label="Filter Genre" :items="genres" variant="outlined" v-model="selectedGenre"
-                class="input" bg-color="blue-darken-2"></v-autocomplete>
+            <v-autocomplete label="Filter Genre" :items="genres" variant="outlined" v-model="selectedGenre" class="input"
+                bg-color="blue-darken-2"></v-autocomplete>
         </div>
         <div>
             <v-autocomplete label="Filter Platform" :items="platforms" variant="outlined" v-model="selectedPlatform"
                 class="input" bg-color="blue-darken-2"></v-autocomplete>
         </div>
         <div>
-            <v-text-field label="Filter Developer" v-model="selectedDeveloper" variant="outlined" class="input" bg-color="blue-darken-2"></v-text-field>
+            <v-text-field label="Filter Developer" v-model="selectedDeveloper" variant="outlined" class="input"
+                bg-color="blue-darken-2"></v-text-field>
         </div>
         <div id="buttons">
             <v-btn @click="filterGamesList" class="input-btn" variant="outlined" color="white">Apply Filter</v-btn>
@@ -83,10 +85,12 @@ h1 {
     margin: auto;
     margin-top: auto;
 }
+
 .input-btn {
     width: 95%;
     margin: 1%;
 }
+
 #buttons {
     margin: auto;
 }</style>
