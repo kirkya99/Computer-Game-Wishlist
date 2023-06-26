@@ -92,7 +92,7 @@ export default {
                     <th class="item" id="genreHead">Genre</th>
                     <th class="item" id="platformHead">Platform</th>
                     <th class="item" id="developerHead">Developer</th>
-                    <th class="item"></th>
+                    <th class="item">View Game | Wishlist</th>
                 </tr>
             </table>
         </div>
@@ -105,8 +105,8 @@ export default {
                     <td v-show="filterList(game)" class="item">{{ game.platform }}</td>
                     <td v-show="filterList(game)" class="item">{{ game.developer }}</td>
                     <td v-show="filterList(game)" class="item">
-                        <v-btn @click="viewGame(game.id)" class="btn" variant="outlined">View Game</v-btn>
-                        <v-btn @click="addToWishlist(game.id)" class="btn" variant="outlined">Add to Wishlist</v-btn>
+                        <v-btn @click="viewGame(game.id)" class="btn" variant="outlined" color="black">View Game</v-btn>
+                        <v-btn @click="addToWishlist(game.id)" class="btn" variant="outlined" color="black">Add</v-btn>
                     </td>
                 </tr>
             </table>
@@ -117,6 +117,7 @@ export default {
 <style scoped>
 th {
     font-size: 25px;
+    color: white;
 }
 
 td {

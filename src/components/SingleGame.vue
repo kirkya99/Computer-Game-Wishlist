@@ -10,7 +10,7 @@ export default {
             currentGameIndex: this.gameIndex
         }
     },
-    updated() {
+    created() {
         this.currentGameIndex = this.gameIndex
     },
     computed: {
@@ -46,13 +46,13 @@ export default {
         <div id="page">
             <div class="headerBar">
                 <div id="leftButton">
-                    <v-btn @click="prevGame" color="blue" class="btn">Previous Game</v-btn>
+                    <v-btn @click="prevGame" variant="outlined" color="black" class="btn">Previous Game</v-btn>
                 </div>
                 <div id="middleButton">
-                    <v-btn @click="quitView" color="blue" class="btn">Return to List</v-btn>
+                    <v-btn @click="quitView" variant="outlined" color="black" class="btn">Return to List</v-btn>
                 </div>
                 <div id="rightButton">
-                    <v-btn @click="nextGame" color="blue" class="btn">Next Game</v-btn>
+                    <v-btn @click="nextGame" variant="outlined" color="black" class="btn">Next Game</v-btn>
                 </div>
             </div>
             <div v-if="games.length" class="gameDetails">

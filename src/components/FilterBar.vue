@@ -51,8 +51,8 @@ export default {
             <v-text-field label="Filter Developer" v-model="selectedDeveloper" variant="outlined" class="input" bg-color="blue-darken-2"></v-text-field>
         </div>
         <div>
-            <v-btn @click="filterGamesList" class="input" variant="outlined">Apply Filter</v-btn>
-            <v-btn @click="resetFilter" class="input" variant="outlined" >Reset Filter</v-btn>
+            <v-btn @click="filterGamesList" class="input" variant="outlined" color="white">Apply Filter</v-btn>
+            <v-btn @click="resetFilter" class="input" variant="outlined" color="white">Reset Filter</v-btn>
         </div>
     </div>
 </template>

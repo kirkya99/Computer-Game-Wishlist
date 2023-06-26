@@ -94,7 +94,7 @@ export default {
                     <th class="item" id="genreHead">Genre</th>
                     <th class="item" id="platformHead">Platform</th>
                     <th class="item" id="developerHead">Developer</th>
-                    <th class="item"></th>
+                    <th class="item">View Game | Wishlist</th>
                 </tr>
             </table>
         </div>
@@ -119,6 +119,7 @@ export default {
 <style scoped>
 th {
     font-size: 25px;
+    color: white;
 }
 
 td {
