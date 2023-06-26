@@ -8,19 +8,19 @@ export const singleGameView = 1;
 import GamesList from './components/GamesList.vue';
 import SingleGame from './components/SingleGame.vue';
 import WishList from './components/WishList.vue';
+import LegalNotice from './components/LegalNotice.vue';
 import axios from 'axios';
 
 export default {
     created() {
         this.fetchGamesList()
-        //this.getTab()
-        this.restoreApplicationFromStorage()
+        this.getTab()
     },
     mounted() {
         this.restoreWishlistFromCookies()
     },
     components: {
-        GamesList, SingleGame, WishList
+        GamesList, SingleGame, WishList, LegalNotice
     },
     data() {
         return {
@@ -114,11 +114,6 @@ export default {
         },
         getTab() {
             this.tab = sessionStorage.getItem('tab')
-        },
-        restoreApplicationFromStorage() {
-            this.tab = sessionStorage.getItem('tab')
-            this.selectedGameIndexAllGames = sessionStorage.getItem('allGamesView')
-            this.selectedGameIndexWishlist = sessionStorage.getItem('wishlistView')
         }
     }
 }
@@ -158,11 +153,7 @@ export default {
                     </div>
                 </v-window-item>
                 <v-window-item :value="2">
-                    <div id="legalNoticeTab">
-                        <div id="page">
-                            
-                        </div>
-                    </div>
+                    <LegalNotice></LegalNotice>
                 </v-window-item>
             </v-window>
         </v-card>
@@ -186,15 +177,4 @@ h1 {
     color: white;
 }
 
-#legalNoticeTab {
-    height: 967px;
-}
-
-#page {
-    background-color: lightblue;
-    width: 60%;
-    height: 95%;
-    margin-left: auto;
-    margin-right: auto;
-}
 </style>
