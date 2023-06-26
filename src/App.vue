@@ -10,7 +10,6 @@ import GamesList from './components/GamesList.vue';
 import SingleGame from './components/SingleGame.vue';
 import WishList from './components/WishList.vue';
 import axios from 'axios';
-import jsCookie from 'js-cookie';
 
 export default {
     created() {
