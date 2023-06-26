@@ -15,7 +15,7 @@ export default {
     },
     computed: {
         currentGame() {
-            return this.games[this.currentGameIndex]
+            return this.games[this.gameIndex]
         }
     },
     methods: {

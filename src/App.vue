@@ -10,11 +10,14 @@ import GamesList from './components/GamesList.vue';
 import SingleGame from './components/SingleGame.vue';
 import WishList from './components/WishList.vue';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import jsCookie from 'js-cookie';
 
 export default {
     created() {
         this.fetchGamesList()
+        this.getTab()
+    },
+    mounted() {
         this.restoreWishlistFromCookies()
     },
     components: {
@@ -92,35 +95,31 @@ export default {
             else {
                 this.wishlistArray.push(this.gamesArray[this.selectedGameIndexAllGames])
             }
-
-            const wishlistJSON = JSON.stringify(this.wishlistArray)
-            console.log(this.wishlistArray)
-            //Cookies.set('cookieWishlist', wishlistJSON)
-            document.cookie = wishlistJSON
-            //Cookies.set('wishlist', JSON.stringify(this.wishlistArray));
-            // console.log(this.wishlistArray)
+            sessionStorage.setItem('wishlist', JSON.stringify(this.wishlistArray))
+            //jsCookie.set('wishlist', JSON.stringify(this.wishlistArray));
         },
-
         removeFromWishlist(gameId) {
             this.findGameFromWishlist(gameId)
-            this.wishlistArray.splice(this.selectedGameIndexFromWishlist, 1);
-
-            const wishlistJSON = JSON.stringify(this.wishlistArray)
-            document.cookie = wishlistJSON
-            //console.log(this.wishlistArray)
-            //Cookies.set('cookieWishlist', wishlistJSON)
-            // this.$cookie.set('wishlist', JSON.stringify(this.wishlistArrayArray));
+            let index = this.selectedGameIndexWishlist
+            this.wishlistArray.splice(index, 1)
+            sessionStorage.setItem('wishlist', JSON.stringify(this.wishlistArray))
+            //jsCookie.set('wishlist', JSON.stringify(this.wishlistArray));
         },
 
         restoreWishlistFromCookies() {
-            //const cookieWishlist = Cookies.get('wishlist');
-            const wishlistJSON = document.cookie 
+            //const cookieWishlist = jsCookie.get('wishlist');
+            const cookieWishlist = sessionStorage.getItem('wishlist')
             if (cookieWishlist) {
-                this.wishlistArray = JSON.parse(this.wishlistJSON);
+                this.wishlistArray = JSON.parse(cookieWishlist);
             }
+        },
+        setTab(tabIndex) {
+            sessionStorage.setItem('tab', tabIndex)
+        },
+        getTab() {
+            this.tab = sessionStorage.getItem('tab')
         }
     }
-
 }
 
 </script>
@@ -130,9 +129,9 @@ export default {
         <h1>Computer Games Wishlist</h1>
         <v-card>
             <v-tabs fixed-tabs v-model="tab" bg-color="blue">
-                <v-tab :value="0">All Games</v-tab>
-                <v-tab :value="1">Wishlist</v-tab>
-                <v-tab :value="2">Legal Notice</v-tab>
+                <v-tab :value="0" @click="setTab(0)">All Games</v-tab>
+                <v-tab :value="1" @click="setTab(1)">Wishlist</v-tab>
+                <v-tab :value="2" @click="setTab(2)">Legal Notice</v-tab>
             </v-tabs>
             <v-window v-model="tab">
                 <v-window-item :value="0">
@@ -153,9 +152,10 @@ export default {
                             @deleteFromWishlist="removeFromWishlist"></WishList>
                     </div>
                     <div v-show="selectedViewWishlist == 1">
-                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist"
+                        <!--<SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist"
                             :games="wishlistArray">
-                        </SingleGame>
+                        </SingleGame>-->
+                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexAllGames" :games="gamesArray"></SingleGame>
                     </div>
                 </v-window-item>
                 <v-window-item :value="2">
@@ -201,4 +201,5 @@ h1 {
     height: 95%;
     margin-left: auto;
     margin-right: auto;
-}</style>
+}
+</style>
