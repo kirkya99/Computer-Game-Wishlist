@@ -58,7 +58,7 @@ export default {
             this.selectedViewAllGames = singleGameViewTab;
         },
         showGameFromWishlist(gameId) {
-            this.findGameFromWishlist(gameId)
+            this.findGameFromList(gameId)
             this.selectedViewWishlist = singleGameViewTab;
         },
         findGameFromList(gameId) {
