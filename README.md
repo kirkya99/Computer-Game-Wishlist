@@ -1,5 +1,5 @@
 # Praktische Aufgabenstellung: Computer Game Wishlist
-Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen
+Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen Sommersemester 2023
 
 ## Gruppenmitglieder:
 * Fabian Schotte, 35604
@@ -7,7 +7,8 @@ Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen
 * Mike Tabler, 35922
 
 ## URL zur Anwendung in der Cloud
-* https://main--transcendent-sunburst-d500e3.netlify.app/
+* Respository: https://github.com/kirkya99/Computer-Game-Wishlist
+* Anwendung: https://main--transcendent-sunburst-d500e3.netlify.app/
 
 ## API
 * API Webseite: https://www.mmobomb.com/api
