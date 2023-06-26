@@ -50,9 +50,9 @@ export default {
         <div>
             <v-text-field label="Filter Developer" v-model="selectedDeveloper" variant="outlined" class="input" bg-color="blue-darken-2"></v-text-field>
         </div>
-        <div>
-            <v-btn @click="filterGamesList" class="input" variant="outlined" color="white">Apply Filter</v-btn>
-            <v-btn @click="resetFilter" class="input" variant="outlined" color="white">Reset Filter</v-btn>
+        <div id="buttons">
+            <v-btn @click="filterGamesList" class="input-btn" variant="outlined" color="white">Apply Filter</v-btn>
+            <v-btn @click="resetFilter" class="input-btn" variant="outlined" color="white">Reset Filter</v-btn>
         </div>
     </div>
 </template>
@@ -83,7 +83,10 @@ h1 {
     margin: auto;
     margin-top: auto;
 }
-v-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.input-btn {
+    width: 95%;
+    margin: 1%;
+}
+#buttons {
+    margin: auto;
 }</style>

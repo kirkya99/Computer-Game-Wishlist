@@ -148,11 +148,11 @@ td {
 }
 
 .btn {
-    width: 50%;
+    width: 48%;
     height: 75px;
     font-size: 15px;
     font-family: Arial;
-
+    margin: 1%;
 }
 
 table {
