@@ -42,7 +42,7 @@ export default {
                 boolGenre = true;
             }
             else {
-                if (genre.includes(this.filterGenre)) {
+                if (genre === this.filterGenre) {
                     boolGenre = true;
                 }
             }
