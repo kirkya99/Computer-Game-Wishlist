@@ -99,8 +99,8 @@ export default {
         },
         removeFromWishlist(gameId) {
             this.findGameFromWishlist(gameId)
-            let index = this.selectedGameIndexWishlist
-            this.wishlistArray.splice(index, 1)
+            //let index = this.selectedGameIndexWishlist
+            this.wishlistArray.splice(this.selectedGameIndexWishlist, 1)
             sessionStorage.setItem('wishlist', JSON.stringify(this.wishlistArray))
             //jsCookie.set('wishlist', JSON.stringify(this.wishlistArray));
         },
