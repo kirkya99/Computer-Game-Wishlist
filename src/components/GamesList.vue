@@ -151,7 +151,6 @@ td {
     font-size: 15px;
     font-family: Arial;
     margin: 1%;
-
 }
 
 table {
