@@ -15,6 +15,7 @@ import Cookies from 'js-cookie';
 export default {
     created() {
         this.fetchGamesList()
+        this.restoreWishlistFromCookies()
     },
     components: {
         GamesList, SingleGame, WishList
@@ -73,7 +74,7 @@ export default {
         showListAllGames() {
             this.selectedViewAllGames = listViewTab
         },
-        showListWishlist(){
+        showListWishlist() {
             this.selectedViewWishlist = listViewTab
         },
         addToWishlist(gameId) {
@@ -92,22 +93,32 @@ export default {
                 this.wishlistArray.push(this.gamesArray[this.selectedGameIndexAllGames])
             }
 
+            const wishlistJSON = JSON.stringify(this.wishlistArray)
+            console.log(this.wishlistArray)
+            //Cookies.set('cookieWishlist', wishlistJSON)
+            document.cookie = wishlistJSON
             //Cookies.set('wishlist', JSON.stringify(this.wishlistArray));
-           // console.log(this.wishlistArray)
+            // console.log(this.wishlistArray)
         },
 
         removeFromWishlist(gameId) {
             this.findGameFromWishlist(gameId)
             this.wishlistArray.splice(this.selectedGameIndexFromWishlist, 1);
-           // this.$cookie.set('wishlist', JSON.stringify(this.wishlistArrayArray));
-        }/*,
+
+            const wishlistJSON = JSON.stringify(this.wishlistArray)
+            document.cookie = wishlistJSON
+            //console.log(this.wishlistArray)
+            //Cookies.set('cookieWishlist', wishlistJSON)
+            // this.$cookie.set('wishlist', JSON.stringify(this.wishlistArrayArray));
+        },
 
         restoreWishlistFromCookies() {
-            const cookieWishlist = Cookies.get('wishlist');
+            //const cookieWishlist = Cookies.get('wishlist');
+            const wishlistJSON = document.cookie 
             if (cookieWishlist) {
-                this.wishlistArray = JSON.parse(cookieWishlist);
+                this.wishlistArray = JSON.parse(this.wishlistJSON);
             }
-        }*/
+        }
     }
 
 }
@@ -126,11 +137,13 @@ export default {
             <v-window v-model="tab">
                 <v-window-item :value="0">
                     <div v-show="selectedViewAllGames == 0">
-                        <GamesList :games="gamesArray" @viewGameFromAllGames="showGameFromList" @addToWishlist="addToWishlist">
+                        <GamesList :games="gamesArray" @viewGameFromAllGames="showGameFromList"
+                            @addToWishlist="addToWishlist">
                         </GamesList>
                     </div>
                     <div v-show="selectedViewAllGames == 1">
-                        <SingleGame @returnToList="showListAllGames" :gameIndex="selectedGameIndexAllGames" :games="gamesArray">
+                        <SingleGame @returnToList="showListAllGames" :gameIndex="selectedGameIndexAllGames"
+                            :games="gamesArray">
                         </SingleGame>
                     </div>
                 </v-window-item>
@@ -140,7 +153,8 @@ export default {
                             @deleteFromWishlist="removeFromWishlist"></WishList>
                     </div>
                     <div v-show="selectedViewWishlist == 1">
-                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist" :games="wishlistArray">
+                        <SingleGame @returnToList="showListWishlist" :gameIndex="selectedGameIndexWishlist"
+                            :games="wishlistArray">
                         </SingleGame>
                     </div>
                 </v-window-item>
