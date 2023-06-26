@@ -47,7 +47,7 @@ export default {
             <div id="returnBtn">
                 <v-btn @click="quitView" variant="outlined" class="btn">Return to List</v-btn>
             </div>
-            <div v-if="games.length" class="gameDetails">
+            <div v-if="games.length" class="text">
                 <div class="meta">
                     <h2>{{ currentGame.title }}</h2>
                     <img :src="currentGame.thumbnail" alt="No Picture available" />
@@ -110,7 +110,7 @@ img {
     margin-right: auto;
 }
 
-.gameDetails {
+.text {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
