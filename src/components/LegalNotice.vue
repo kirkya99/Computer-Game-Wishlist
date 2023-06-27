@@ -36,8 +36,10 @@ export default {
                     </ul>
                 </div>
                 <h2>Links</h2>
-                <p>Our used API was provided by MMOBomb.com and MMOBomb.com is the source of the used data as well as the
-                    owner of the used API.</p>
+                <p>Our used API was provided by MMOBomb.com and MMOBomb.com is the provider of the used data. 
+                    The content derived from the API from the MMOBomb website located at 
+                    <a target="_blank" rel="noopener" href="https://www.mmobomb.com/">www.mmobomb.com</a> is a 
+                    copyrighted work belonging to Digiwalls Media.</p>
                 <div class="btn">
                     <v-btn @click="openAPI" variant="outlined" class="v-btn">Our used API</v-btn>
                 </div>
