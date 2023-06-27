@@ -26,7 +26,7 @@ verfügbar sein.
         * 'X-RapidAPI-Host': 'mmo-games.p.rapidapi.com'
 
 ## Auflistung der verwendeten fremden Codebestandteile
-* main.js:8 von https://vuetifyjs.com/en/getting-started/installation/
+* main.js:8 von https://vuetifyjs.com/en/getting-started/installation/ aus der Kategorie *Manual Steps*
 
 ## Anweisungen, um die Anwendung zu starten
 * npm install
