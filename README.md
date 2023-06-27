@@ -3,12 +3,19 @@ Praktische Aufgabenstellung für die Vorlesung Grafische Bedienoberflächen Somm
 
 ## Gruppenmitglieder:
 * Fabian Schotte, 35604
-* Arjan Mavraj , 34197
+* Arjan Mavraj, 34197
 * Mike Tabler, 35922
+
+## Projektbeschreibung
+Das Thema unseres Projekts ist die Darstellung von Computerspielen und das Speichern von Spielen
+in einer Wunschliste. Die Darstellung aller Spiele sowie die Darstellung der Wunschliste erfolgt in
+einer Liste, die sich mit Attributen filtern lassen soll.
+Zudem sollen in einer Einzelansicht mehr Informationen über das jeweilige Spiel
+verfügbar sein.
 
 ## URL zur Anwendung in der Cloud
 * Respository: https://github.com/kirkya99/Computer-Game-Wishlist
-* Anwendung: https://main--transcendent-sunburst-d500e3.netlify.app/
+* Anwendung: https://computer-games-wishlist.netlify.app/
 
 ## API
 * API Webseite: https://www.mmobomb.com/api
