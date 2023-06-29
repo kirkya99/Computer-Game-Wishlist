@@ -16,7 +16,7 @@ verfügbar sein.
 ## URL zur Anwendung in der Cloud
 * Respository: https://github.com/kirkya99/Computer-Game-Wishlist
 * Anwendung: https://computer-games-wishlist.netlify.app/
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/ec36522b-1970-42eb-b657-5606758d8ebe/deploy-status)](https://app.netlify.com/sites/computer-games-wishlist/deploys)
+* [![Netlify Status](https://api.netlify.com/api/v1/badges/ec36522b-1970-42eb-b657-5606758d8ebe/deploy-status)](https://app.netlify.com/sites/computer-games-wishlist/deploys)
 
 ## API
 * API Webseite: https://www.mmobomb.com/api
